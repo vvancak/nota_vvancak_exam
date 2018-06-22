@@ -23,11 +23,6 @@ end
 local SpringGiveOrderToUnit = Spring.GiveOrderToUnit
 local SpringGetUnitCommands = Spring.GetUnitCommands
 
-function Init(self)
-    self.init = true
-    self.working = {}
-end
-
 function Run(self, units, parameter)
     if not self.init then
         Init(self)
@@ -41,16 +36,15 @@ function Run(self, units, parameter)
         return RUNNING
     end
 
-    if not self.working[unit] then
+    if bb.workers[unit] == "IDLE" then
         SpringGiveOrderToUnit(unit, CMD.RECLAIM, { position.x, position.y, position.z, radius }, CMD.OPT_SHIFT)
-        self.working[unit] = true
+        bb.workers[unit] = "RECLAIM"
         return RUNNING
     end
 
-    self.working[unit] = nil
+    self.working[unit] = "IDLE"
     return SUCCESS
 end
 
 function Reset(self)
-    Init(self)
 end

@@ -15,7 +15,7 @@ function getInfo()
     }
 end
 
-SpringGetUnitsInSphere = Spring.GetUnitsInSphere
+local SpringGetUnitsInSphere = Spring.GetUnitsInSphere
 
 -- @description return current wind statistics
 return function(position)

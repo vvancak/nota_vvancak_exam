@@ -14,7 +14,7 @@ function getInfo()
     }
 end
 
-SpringGetUnitPosition = Spring.GetUnitPosition
+local SpringGetUnitPosition = Spring.GetUnitPosition
 
 -- @description return current wind statistics
 return function(position, enemies)

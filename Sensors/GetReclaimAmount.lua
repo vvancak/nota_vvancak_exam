@@ -15,8 +15,8 @@ function getInfo()
     }
 end
 
-SpringGetFeaturesInSphere = Spring.GetFeaturesInSphere
-SpringGetFeatureResources = Spring.GetFeatureResources
+local SpringGetFeaturesInSphere = Spring.GetFeaturesInSphere
+local SpringGetFeatureResources = Spring.GetFeatureResources
 
 -- @description return current wind statistics
 return function(position)

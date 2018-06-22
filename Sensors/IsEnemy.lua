@@ -14,7 +14,7 @@ function getInfo()
     }
 end
 
-SpringGetUnitAllyTeam = Spring.GetUnitAllyTeam
+local SpringGetUnitAllyTeam = Spring.GetUnitAllyTeam
 
 -- @description return current wind statistics
 return function(unit, enemy)

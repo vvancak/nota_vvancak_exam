@@ -1,6 +1,6 @@
 local sensorInfo = {
-    name = "GetIdleTransport",
-    desc = "Searches for a transporter with nothing to do",
+    name = "GetIdleUnit",
+    desc = "Searches for units with nothing to do",
     author = "vvancak",
     date = "2018-06-21",
     license = "notAlicense",
@@ -16,17 +16,17 @@ function getInfo()
 end
 
 local SpringGetUnitCommands = Spring.GetUnitCommands
-local SpringGetUnitIsTransporting = Spring.GetUnitIsTransporting
-
 
 -- @description return current wind statistics
-return function()
-    for i = 1, #units do
-        local current = units[i]
+return function(class_units)
+
+    for i = 1, #class_units do
+        local current = class_units[i]
         local cmds = SpringGetUnitCommands(current, 1)
-        if #cmds == 0 and not SpringGetUnitIsTransporting(current) then
+        if #cmds == 0 then
             return current
         end
     end
+
     return nil
 end

@@ -15,7 +15,7 @@ function getInfo()
     }
 end
 
-SpringGetUnitDefID = Spring.GetUnitDefID
+local SpringGetUnitDefID = Spring.GetUnitDefID
 
 -- @description return current wind statistics
 return function(unit)
