@@ -1,0 +1,77 @@
+{
+	"additionalNodes": [],
+	"additionalParameters": {
+		"root": {
+			"height": 108,
+			"width": 216
+		}
+	},
+	"inputs": [ {
+		"command": "BETS_POSITION",
+		"name": "input0"
+	} ],
+	"outputs": [],
+	"properties": {
+		"i4AKaByoORVeWdWljzErERqxZaZYmFmG": {
+			"height": 60,
+			"title": "sequence",
+			"width": 143,
+			"x": 288,
+			"y": 17
+		},
+		"mJEgbW9LLUFjool5j6mPREzByUkQXkJr": {
+			"height": 92,
+			"title": "nota_vvancak_exam.Reclaim",
+			"width": 248,
+			"x": 628,
+			"y": 143
+		},
+		"nNtugdRDUBCLHyg2vMa8gXhNxN0Nvp7L": {
+			"height": 107,
+			"title": "store",
+			"width": 477,
+			"x": 597,
+			"y": -2
+		}
+	},
+	"roles": [ {
+		"categories": [],
+		"name": "Role 0"
+	} ],
+	"root": {
+		"children": [ {
+			"children": [],
+			"id": "nNtugdRDUBCLHyg2vMa8gXhNxN0Nvp7L",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "var",
+				"value": "range"
+			}, {
+				"name": "value",
+				"value": "nota_vvancak_exam.GetAreaDpsRatio(input0)"
+			}, {
+				"name": "scriptName",
+				"value": "store"
+			} ],
+			"scriptName": "store"
+		}, {
+			"children": [],
+			"id": "mJEgbW9LLUFjool5j6mPREzByUkQXkJr",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "position",
+				"value": "input0"
+			}, {
+				"name": "radius",
+				"value": "150"
+			}, {
+				"name": "scriptName",
+				"value": "nota_vvancak_exam.Reclaim"
+			} ],
+			"scriptName": "nota_vvancak_exam.Reclaim"
+		} ],
+		"id": "i4AKaByoORVeWdWljzErERqxZaZYmFmG",
+		"nodeType": "sequence",
+		"parameters": []
+	}
+}
