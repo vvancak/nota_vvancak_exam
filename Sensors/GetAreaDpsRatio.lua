@@ -1,5 +1,5 @@
 local sensorInfo = {
-    name = "GetAreaDPSRatio",
+    name = "GetAreaDpsRatio",
     desc = "Compares my DPS to enemy DPS in the area",
     author = "vvancak",
     date = "2018-06-21",
@@ -7,7 +7,7 @@ local sensorInfo = {
 }
 
 local EVAL_PERIOD_DEFAULT = -1 -- acutal, no caching
-local SPHERE_RADIUS = 500
+local SPHERE_RADIUS = 1000
 
 function getInfo()
     return {
@@ -25,7 +25,7 @@ return function(position)
 
     for i = 1, #units_in_sphere do
         local current = units_in_sphere[i]
-        if (Sensors.IsEnemy(units[1], current)) then
+        if (Sensors.IsEnemy(current)) then
             enemy_dps = enemy_dps + Sensors.GetUnitDPS(current)
         else
             my_dps = my_dps + Sensors.GetUnitDPS(current)

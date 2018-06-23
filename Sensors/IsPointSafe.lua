@@ -1,6 +1,6 @@
 local sensorInfo = {
     name = "IsPointSafe",
-    desc = "Checks for proximity of enemies",
+    desc = "Point is safe <=> Out of enemy range",
     author = "vvancak",
     date = "2018-06-21",
     license = "notAlicense",
@@ -17,7 +17,9 @@ end
 local SpringGetUnitPosition = Spring.GetUnitPosition
 
 -- @description return current wind statistics
-return function(position, enemies)
+return function(position)
+    local enemies = Sensors.core.EnemyUnits()
+
     for i = 1, #enemies do
         local enemy = enemies[i]
         local x, y, z = SpringGetUnitPosition(enemy)
