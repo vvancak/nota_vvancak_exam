@@ -24,10 +24,6 @@ local SpringGiveOrderToUnit = Spring.GiveOrderToUnit
 local SpringGetUnitCommands = Spring.GetUnitCommands
 
 function Run(self, units, parameter)
-    if not self.init then
-        Init(self)
-    end
-
     local position = parameter.position
     local radius = parameter.radius
     local unit = units[1]
@@ -42,7 +38,7 @@ function Run(self, units, parameter)
         return RUNNING
     end
 
-    self.working[unit] = "IDLE"
+    bb.workers[unit] = "IDLE"
     return SUCCESS
 end
 
