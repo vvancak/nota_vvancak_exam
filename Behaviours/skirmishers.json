@@ -17,115 +17,108 @@
 	"properties": {
 		"17Zj3tsQOyRCWR0I490RbBGzKtJlzAoc": {
 			"height": 94,
-			"title": "Range",
+			"title": "Unit Range",
 			"width": 493,
-			"x": 800,
-			"y": -96
+			"x": 799,
+			"y": 13
 		},
 		"46pSVTBs2XcPnBkjCn05EJUlRjjxL7VH": {
 			"height": 94,
 			"title": "Highest DPS Unit in the area",
 			"width": 506,
-			"x": 1619,
-			"y": -92
+			"x": 1645,
+			"y": -37
 		},
 		"48CtCGpxGFNJHRBMj0arCzcsY1kLK9QG": {
 			"height": 94,
-			"title": "Skirmishers stays behind front lines",
+			"title": "Enemy Strongpoint position",
 			"width": 493,
 			"x": 799,
-			"y": -194
+			"y": -113
 		},
 		"5PObSCN8XTm7YCEufj5ozlO7jhOrGwQf": {
 			"height": 92,
 			"title": "nota_vvancak_exam.Move",
 			"width": 231,
-			"x": 802,
-			"y": 325
+			"x": 798,
+			"y": 383
 		},
 		"Dlq4pgKMwoqdfexBA7KMCGStCjEk4FtE": {
 			"height": 60,
 			"title": "Move",
 			"width": 143,
-			"x": 616,
-			"y": 280
+			"x": 612,
+			"y": 338
 		},
 		"J6TPFUezWxqumrUoSsGbxqCvULRq4RFe": {
 			"height": 92,
 			"title": "nota_vvancak_exam.Attack",
 			"width": 235,
-			"x": 1909,
-			"y": 28
+			"x": 1961,
+			"y": 91
 		},
 		"Ke0SB0UPLDPUbNSQ5419bX2WnDF3t6UJ": {
 			"height": 90,
 			"title": "Check any unit found ",
 			"width": 219,
-			"x": 1626,
-			"y": 90
+			"x": 1656,
+			"y": 134
 		},
 		"LSFMSihOwRQRtK2W0tpdJNK3HlgDwhKw": {
 			"height": 94,
 			"title": "Get Units which are too far from the front",
 			"width": 504,
-			"x": 800,
-			"y": 227
+			"x": 796,
+			"y": 285
 		},
 		"P7CEzspxstwh0WWECnLZFB4QDFPtLODC": {
 			"height": 60,
 			"title": "sequence",
 			"width": 143,
-			"x": 393,
+			"x": 383,
 			"y": 24
 		},
 		"Qy6tvyMaJz8QYSDtvBzFxstvt1MD3lHG": {
 			"height": 94,
-			"title": "Skirmishers stays behind front lines",
+			"title": "Skirmishers stay behind front lines",
 			"width": 459,
-			"x": 658,
-			"y": -293
+			"x": 604,
+			"y": -244
 		},
 		"YtSjyo0K8QHLioOBdngX3fqlLUStpcjc": {
 			"height": 60,
 			"title": "Attack",
 			"width": 143,
-			"x": 613,
-			"y": 18
+			"x": 610,
+			"y": 24
 		},
 		"iRRgS9TK2Bcu1z1lYTAXn9qv8eJ4cOiJ": {
 			"height": 92,
 			"title": "Check if strongpoint is in range",
 			"width": 487,
-			"x": 805,
-			"y": 105
+			"x": 800,
+			"y": 148
 		},
 		"pnm5h5v0VvvhULXKDwF6YR2yvUudo1KI": {
-			"height": 92,
+			"height": 97,
 			"title": "nota_vvancak_exam.Fight",
-			"width": 228,
-			"x": 1913,
-			"y": 152
+			"width": 235,
+			"x": 1962,
+			"y": 189
 		},
 		"vgFYdr8DLITQ0jXPT7DFJRHhkSzJlpt4": {
 			"height": 60,
-			"title": "Attack Towers",
-			"width": 171,
-			"x": 1367,
-			"y": 10
+			"title": "Attack Dangerous units",
+			"width": 229,
+			"x": 1362,
+			"y": 69
 		},
 		"voMPxcn6u1RS0nUlo8JsjhoOmtUME5qC": {
 			"height": 92,
-			"title": "nota_vvancak_exam.Fight",
-			"width": 228,
-			"x": 1360,
-			"y": 182
-		},
-		"z6cn9ewtsKdST5E9qO58oZN2k6nrU2Z1": {
-			"height": 94,
-			"title": "Strong Point DPS ratio",
-			"width": 493,
-			"x": 803,
-			"y": -3
+			"title": "Fight-Order to the safe spot => nota_vvancak_exam.Fight",
+			"width": 428,
+			"x": 1356,
+			"y": 248
 		}
 	},
 	"roles": [ {
@@ -174,21 +167,6 @@
 				}, {
 					"name": "value",
 					"value": "nota_vvancak_exam.GetUnitGroupRange(unit_group)"
-				}, {
-					"name": "scriptName",
-					"value": "store"
-				} ],
-				"scriptName": "store"
-			}, {
-				"children": [],
-				"id": "z6cn9ewtsKdST5E9qO58oZN2k6nrU2Z1",
-				"nodeType": "luaCommand",
-				"parameters": [ {
-					"name": "var",
-					"value": "dps_ratio"
-				}, {
-					"name": "value",
-					"value": "nota_vvancak_exam.GetAreaDpsRatio(strongpoint.position)"
 				}, {
 					"name": "scriptName",
 					"value": "store"

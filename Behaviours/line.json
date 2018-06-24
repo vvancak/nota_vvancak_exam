@@ -19,64 +19,64 @@
 			"height": 172,
 			"title": "Radars",
 			"width": 295,
-			"x": 945,
-			"y": -260
+			"x": 928,
+			"y": -235
 		},
 		"ASZuw1PRQOfbkufNuF726MzX6E0EQI2N": {
 			"height": 172,
 			"title": "Workers",
 			"width": 295,
-			"x": 940,
-			"y": -73
+			"x": 923,
+			"y": -48
 		},
 		"FiLdHZLvyKalOOM4L6W7iLgPfdkABBKK": {
 			"height": 92,
 			"title": "Line Units",
 			"width": 183,
-			"x": 648,
-			"y": -122
+			"x": 633,
+			"y": -76
 		},
 		"RG4F4iWLpkHA9LIZFau3cGBA9bM6Km3b": {
 			"height": 72,
 			"title": "wait",
 			"width": 131,
-			"x": 647,
-			"y": 88
+			"x": 630,
+			"y": 113
 		},
 		"dFisqNosj8hm7MOEB1H10LUYMsp6fXkt": {
 			"height": 130,
 			"title": "New units",
 			"width": 285,
-			"x": 942,
-			"y": -402
+			"x": 925,
+			"y": -377
 		},
 		"fRO2cBhpp7IY3xiIULjCoRVw8aWWroQh": {
 			"height": 70,
 			"title": "parallel",
 			"width": 202,
-			"x": 648,
-			"y": -2
+			"x": 631,
+			"y": 23
 		},
 		"i3WhjuAClrCxycDsnB13SLUSQu8nXaz7": {
 			"height": 60,
 			"title": "sequence",
 			"width": 143,
-			"x": 369,
-			"y": 24
+			"x": 339,
+			"y": 25
 		},
 		"t0QMYNGNPRcPwIS5ZmzJ4MoONDDbZ3rb": {
 			"height": 172,
 			"title": "Army (Warriors & Zeuses)",
 			"width": 295,
-			"x": 939,
-			"y": 109
+			"x": 922,
+			"y": 134
 		},
 		"vinItJd2b4CfhAt30fdA6FbUOAcPdyHh": {
 			"height": 172,
 			"title": "Skirmishers",
 			"width": 295,
-			"x": 945,
-			"y": 291
+			"x": 928,
+			"y": 316
 		}
 	},
 	"roles": [ {

@@ -26,8 +26,8 @@
 			"height": 60,
 			"title": "Assemble units",
 			"width": 177,
-			"x": 950,
-			"y": 241
+			"x": 1019,
+			"y": 223
 		},
 		"BfSBUn1HVRDFIWcZHoPfwuKHDQqXavRi": {
 			"height": 60,
@@ -54,22 +54,22 @@
 			"height": 92,
 			"title": "nota_vvancak_exam.Move",
 			"width": 231,
-			"x": 1219,
-			"y": 294
+			"x": 1282,
+			"y": 266
 		},
 		"iWtVJFVSrmW4OmzxBlg4NaWQ38MAnLE1": {
 			"height": 92,
 			"title": "nota_vvancak_exam.Fight",
 			"width": 228,
-			"x": 966,
+			"x": 958,
 			"y": 19
 		},
 		"jxObHbnrgdZESyYk7rRqTvzAPWGLfcPM": {
 			"height": 94,
-			"title": "Assembly Point",
+			"title": "Assembly Point (2 points behind front line)",
 			"width": 458,
-			"x": 1207,
-			"y": 154
+			"x": 1283,
+			"y": 129
 		}
 	},
 	"roles": [ {

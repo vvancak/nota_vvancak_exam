@@ -33,8 +33,8 @@
 			"height": 92,
 			"title": "nota_vvancak_exam.Move",
 			"width": 232,
-			"x": 863,
-			"y": 445
+			"x": 844,
+			"y": 422
 		},
 		"Tg5dt3S7yj0g2DYGKun1vdXm3h34A0mo": {
 			"height": 94,
@@ -66,17 +66,17 @@
 		},
 		"gBsCwggrez0bkRS2aC2eyPapSi16RWoV": {
 			"height": 94,
-			"title": "Idle units Too Far from the front",
+			"title": "Units Too Far from the front",
 			"width": 504,
-			"x": 877,
-			"y": 329
+			"x": 846,
+			"y": 308
 		},
 		"hhRet4Jud1kSiML6ToPBSlopHXO3tt92": {
 			"height": 60,
 			"title": "Move to Front",
 			"width": 170,
-			"x": 612,
-			"y": 419
+			"x": 607,
+			"y": 382
 		}
 	},
 	"roles": [ {
