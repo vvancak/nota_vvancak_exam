@@ -39,7 +39,7 @@ return function(mission_info, line_id)
         return "armmart"
     end
 
-    -- army
+    -- army (last option => ensure we have excess metal in case radar/fark is needed)
     if (chance >= 7) and Sensors.CanAffordUnit(mission_info, "armzeus", 1.5) then
         return "armzeus"
     end

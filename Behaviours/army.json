@@ -163,7 +163,7 @@
 			"nodeType": "luaCondition",
 			"parameters": [ {
 				"name": "expression",
-				"value": "front_dps_ratio > 3"
+				"value": "front_dps_ratio > 2"
 			}, {
 				"name": "repeat",
 				"value": "false"
