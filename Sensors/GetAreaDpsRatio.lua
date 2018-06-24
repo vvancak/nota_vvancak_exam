@@ -7,7 +7,7 @@ local sensorInfo = {
 }
 
 local EVAL_PERIOD_DEFAULT = -1 -- acutal, no caching
-local SPHERE_RADIUS = 1000
+local SPHERE_RADIUS = 1500
 
 function getInfo()
     return {

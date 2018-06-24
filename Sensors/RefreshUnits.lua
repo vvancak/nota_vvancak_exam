@@ -18,6 +18,7 @@ local SpringGetMyTeamID = Spring.GetMyTeamID
 local SpringGetTeamUnits = Spring.GetTeamUnits
 local SpringValidUnitID = Spring.ValidUnitID
 local SpringGetUnitDefID = Spring.GetUnitDefID
+local SpringGetUnitIsDead = Spring.GetUnitIsDead
 
 local function GetUnitLine(unitName)
     if not bb.orders then
@@ -35,16 +36,10 @@ local function GetUnitLine(unitName)
     end
 
     return 1
-    -- return math.random(3)
 end
 
 local function CreateLineUnits(line_id)
     local line = bb.lines[line_id]
-
-    -- transports
-    if not line.transports then
-        line.transports = {}
-    end
 
     -- attack units
     if not line.attack then
@@ -54,11 +49,6 @@ local function CreateLineUnits(line_id)
     -- skirmishers
     if not line.skirmish then
         line.skirmish = {}
-    end
-
-    -- defense units
-    if not line.defense then
-        line.defense = {}
     end
 
     -- workers
@@ -72,60 +62,63 @@ local function CreateLineUnits(line_id)
     end
 end
 
-local function PurgeDeadUnits(line_id)
-    -- transports
-    local line = bb.lines[line_id]
-    for i = 1, #line.transports do
-        local unit_id = line.transports[i]
-        if not SpringValidUnitID(unit_id) then
-            table.remove(line.transports, i)
-        end
+local function IsDead(unit_id)
+    if not SpringValidUnitID(unit_id) then
+        return true
     end
+
+    if SpringGetUnitIsDead(unit_id) then
+        return true
+    end
+
+    return false
+end
+
+local function PurgeDeadUnits(line_id)
 
     -- radars
     local line = bb.lines[line_id]
+    local new_table = {}
     for i = 1, #line.radar do
         local unit_id = line.radar[i]
-        if not SpringValidUnitID(unit_id) then
-            table.remove(line.radar, i)
+        if not IsDead(unit_id) then
+            new_table[#new_table + 1] = unit_id
         end
     end
+    line.radar = new_table
 
     -- skirmishers
     local line = bb.lines[line_id]
+    local new_table = {}
     for i = 1, #line.skirmish do
         local unit_id = line.skirmish[i]
-        if not SpringValidUnitID(unit_id) then
-            table.remove(line.skirmish, i)
+        if not IsDead(unit_id) then
+            new_table[#new_table + 1] = unit_id
         end
     end
+    line.skirmish = new_table
 
     -- attack units
     local line = bb.lines[line_id]
+    local new_table = {}
     for i = 1, #line.attack do
         local unit_id = line.attack[i]
-        if not SpringValidUnitID(unit_id) then
-            table.remove(line.attack, i)
+        if not IsDead(unit_id) then
+            new_table[#new_table + 1] = unit_id
         end
     end
-
-    -- defense (black boxes)
-    local line = bb.lines[line_id]
-    for i = 1, #line.defense do
-        local unit_id = line.defense[i]
-        if not SpringValidUnitID(unit_id) then
-            table.remove(line.defense, i)
-        end
-    end
+    line.attack = new_table
 
     -- workers
     local line = bb.lines[line_id]
+    local new_table = {}
     for i = 1, #line.workers do
         local unit_id = line.workers[i]
-        if not SpringValidUnitID(unit_id) then
-            table.remove(line.workers, i)
+        if not IsDead(unit_id) then
+            new_table[#new_table + 1] = unit_id
         end
     end
+    line.workers = new_table
 end
 
 local function CreateNewUnit(unit_id)
@@ -135,35 +128,24 @@ local function CreateNewUnit(unit_id)
     local line_id = GetUnitLine(unitName)
     local line = bb.lines[line_id]
 
-    -- transports
-    if UnitDefs[defID].isTransport then
-        line.transports[#line.transports + 1] = unit_id
-    else
+    -- attack
+    if unitName == "armzeus" or unitName == "armmav" or unitName == "armwar" then
+        line.attack[#line.attack + 1] = unit_id
+    end
 
-        -- attack
-        if unitName == "armzeus" or unitName == "armmav" or unitName == "armwar" then
-            line.attack[#line.attack + 1] = unit_id
-        end
+    -- skirmishers
+    if unitName == "armmart" then
+        line.skirmish[#line.skirmish + 1] = unit_id
+    end
 
-        -- skirmishers
-        if unitName == "armmart" then
-            line.skirmish[#line.skirmish + 1] = unit_id
-        end
+    -- radar
+    if unitName == "armseer" then
+        line.radar[#line.radar + 1] = unit_id
+    end
 
-        -- defense (armbox)
-        if unitName == "armbox" then
-            line.defense[#line.defense + 1] = unit_id
-        end
-
-        -- radar
-        if unitName == "armseer" then
-            line.radar[#line.radar + 1] = unit_id
-        end
-
-        -- workers
-        if unitName == "armfark" then
-            line.workers[#line.workers + 1] = unit_id
-        end
+    -- workers
+    if unitName == "armfark" then
+        line.workers[#line.workers + 1] = unit_id
     end
 end
 
@@ -178,12 +160,15 @@ return function()
         -- init classes (transports, attack, skirmish, radar, worker, defense)
         for line_id = 1, #bb.lines do
             CreateLineUnits(line_id)
-            PurgeDeadUnits(line_id)
         end
 
         -- init marker which units are already assigned
         bb.registered_units = {}
     end
+
+    -- dead units
+    local line_to_purge = math.random(#bb.lines)
+    PurgeDeadUnits(line_to_purge)
 
     -- get allies
     local teamID = SpringGetMyTeamID()

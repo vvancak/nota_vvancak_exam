@@ -15,15 +15,36 @@ function getInfo()
 end
 
 -- @description return current wind statistics
-return function(corridor_def)
+return function(corridor_def, points_behind)
     for i = 1, #corridor_def do
-        local pos = corridor_def[i].position
-        local dps_ratio = Sensors.GetAreaDpsRatio(pos)
+
+        local position = corridor_def[i].position
+        local dps_ratio = Sensors.GetAreaDpsRatio(position)
+
+        -- position not above DPS limit
         if (dps_ratio <= 1) then
-            if (i > 2) then
-                return corridor_def[1]
+
+            -- move [points_behind] back
+            if (i > points_behind) then
+                position = corridor_def[i - points_behind].position
+            else
+                position = corridor_def[1].position
             end
+
+            -- draw red cross
+            if (Script.LuaUI('drawCross_update')) then
+                Script.LuaUI.drawCross_update({
+                    x = position.x,
+                    y = position.y,
+                    z = position.z,
+                    color = { r = 1, g = 0, b = 0 }
+                })
+            end
+
+            return position
         end
     end
-    return corridor_def[#corridor_def]
+
+    -- enemy base
+    return corridor_def[#corridor_def].position
 end

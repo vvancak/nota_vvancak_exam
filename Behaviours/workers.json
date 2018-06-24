@@ -1,0 +1,204 @@
+{
+	"additionalNodes": [],
+	"additionalParameters": {
+		"root": {
+			"height": 128,
+			"width": 248
+		}
+	},
+	"inputs": [ {
+		"command": "Variable",
+		"name": "unit_group"
+	}, {
+		"command": "Variable",
+		"name": "corridor_points"
+	} ],
+	"outputs": [],
+	"properties": {
+		"AlZO9UqydmhGVBFKqeYE3oIrOv7iJ1AD": {
+			"height": 94,
+			"title": "Workers stay behind front lines",
+			"width": 458,
+			"x": 643,
+			"y": -102
+		},
+		"EawoAnUSRabDc8LlbceukBgBNGEes4q1": {
+			"height": 60,
+			"title": "sequence",
+			"width": 143,
+			"x": 421,
+			"y": 24
+		},
+		"Ih7NiaOHoi1IVhc9xi1V3hQNoRen5pJr": {
+			"height": 92,
+			"title": "nota_vvancak_exam.Move",
+			"width": 232,
+			"x": 863,
+			"y": 445
+		},
+		"Tg5dt3S7yj0g2DYGKun1vdXm3h34A0mo": {
+			"height": 94,
+			"title": "Reclaim at the front",
+			"width": 458,
+			"x": 643,
+			"y": 2
+		},
+		"e5blwDgc0JHjzQoyi03bU0tsT3Ye4aeO": {
+			"height": 112,
+			"title": "nota_vvancak_exam.Repair",
+			"width": 238,
+			"x": 1174,
+			"y": 182
+		},
+		"eaqgkCTrSawX6X012NQPudTXRkpkCrOc": {
+			"height": 90,
+			"title": "Reclaim/Repair",
+			"width": 194,
+			"x": 914,
+			"y": 113
+		},
+		"eyeb2AL4Wg9zqWL0QVHhmGA9g7CLt0qB": {
+			"height": 112,
+			"title": "nota_vvancak_exam.Reclaim",
+			"width": 248,
+			"x": 1171,
+			"y": 14
+		},
+		"gBsCwggrez0bkRS2aC2eyPapSi16RWoV": {
+			"height": 94,
+			"title": "Idle units Too Far from the front",
+			"width": 504,
+			"x": 877,
+			"y": 329
+		},
+		"hhRet4Jud1kSiML6ToPBSlopHXO3tt92": {
+			"height": 60,
+			"title": "Move to Front",
+			"width": 170,
+			"x": 612,
+			"y": 419
+		}
+	},
+	"roles": [ {
+		"categories": [],
+		"name": "Role 0"
+	} ],
+	"root": {
+		"children": [ {
+			"children": [],
+			"id": "AlZO9UqydmhGVBFKqeYE3oIrOv7iJ1AD",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "var",
+				"value": "front_point"
+			}, {
+				"name": "value",
+				"value": "nota_vvancak_exam.GetFrontSafePoint(corridor_points, 3)"
+			}, {
+				"name": "scriptName",
+				"value": "store"
+			} ],
+			"scriptName": "store"
+		}, {
+			"children": [],
+			"id": "Tg5dt3S7yj0g2DYGKun1vdXm3h34A0mo",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "var",
+				"value": "reclaim_available"
+			}, {
+				"name": "value",
+				"value": "nota_vvancak_exam.GetReclaimAmount(front_point, 500)"
+			}, {
+				"name": "scriptName",
+				"value": "store"
+			} ],
+			"scriptName": "store"
+		}, {
+			"children": [ {
+				"children": [],
+				"id": "eyeb2AL4Wg9zqWL0QVHhmGA9g7CLt0qB",
+				"nodeType": "luaCommand",
+				"parameters": [ {
+					"name": "unit_group",
+					"value": "unit_group"
+				}, {
+					"name": "position",
+					"value": "front_point"
+				}, {
+					"name": "radius",
+					"value": "750"
+				}, {
+					"name": "scriptName",
+					"value": "nota_vvancak_exam.Reclaim"
+				} ],
+				"scriptName": "nota_vvancak_exam.Reclaim"
+			}, {
+				"children": [],
+				"id": "e5blwDgc0JHjzQoyi03bU0tsT3Ye4aeO",
+				"nodeType": "luaCommand",
+				"parameters": [ {
+					"name": "unit_group",
+					"value": "unit_group"
+				}, {
+					"name": "position",
+					"value": "front_point"
+				}, {
+					"name": "radius",
+					"value": "750"
+				}, {
+					"name": "scriptName",
+					"value": "nota_vvancak_exam.Repair"
+				} ],
+				"scriptName": "nota_vvancak_exam.Repair"
+			} ],
+			"id": "eaqgkCTrSawX6X012NQPudTXRkpkCrOc",
+			"nodeType": "luaCondition",
+			"parameters": [ {
+				"name": "expression",
+				"value": "reclaim_available > 100"
+			}, {
+				"name": "repeat",
+				"value": "false"
+			} ]
+		}, {
+			"children": [ {
+				"children": [],
+				"id": "gBsCwggrez0bkRS2aC2eyPapSi16RWoV",
+				"nodeType": "luaCommand",
+				"parameters": [ {
+					"name": "var",
+					"value": "workers_to_move"
+				}, {
+					"name": "value",
+					"value": "nota_vvancak_exam.GetUnitsNotOnFront(unit_group, front_point)"
+				}, {
+					"name": "scriptName",
+					"value": "store"
+				} ],
+				"scriptName": "store"
+			}, {
+				"children": [],
+				"id": "Ih7NiaOHoi1IVhc9xi1V3hQNoRen5pJr",
+				"nodeType": "luaCommand",
+				"parameters": [ {
+					"name": "unit_group",
+					"value": "workers_to_move"
+				}, {
+					"name": "position",
+					"value": "front_point"
+				}, {
+					"name": "scriptName",
+					"value": "nota_vvancak_exam.Move"
+				} ],
+				"scriptName": "nota_vvancak_exam.Move"
+			} ],
+			"id": "hhRet4Jud1kSiML6ToPBSlopHXO3tt92",
+			"nodeType": "sequence",
+			"parameters": []
+		} ],
+		"id": "EawoAnUSRabDc8LlbceukBgBNGEes4q1",
+		"nodeType": "sequence",
+		"parameters": []
+	}
+}

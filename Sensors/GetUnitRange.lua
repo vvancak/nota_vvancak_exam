@@ -1,6 +1,6 @@
 local sensorInfo = {
-    name = "GetUnitRange",
-    desc = "Returns range of a unit",
+    name = "GetUnitsRange",
+    desc = "Returns range of unit",
     author = "vvancak",
     date = "2018-06-21",
     license = "notAlicense",

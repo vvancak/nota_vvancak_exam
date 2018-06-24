@@ -7,7 +7,6 @@ local sensorInfo = {
 }
 
 local EVAL_PERIOD_DEFAULT = -1 -- acutal, no caching
-local SPHERE_RADIUS = 300
 
 function getInfo()
     return {
@@ -19,8 +18,8 @@ local SpringGetFeaturesInSphere = Spring.GetFeaturesInSphere
 local SpringGetFeatureResources = Spring.GetFeatureResources
 
 -- @description return current wind statistics
-return function(position)
-    local features = SpringGetFeaturesInSphere(position.x, position.y, position.z, SPHERE_RADIUS)
+return function(position ,radius)
+    local features = SpringGetFeaturesInSphere(position.x, position.y, position.z, radius)
     local reclaim = 0
 
     for i = 1, #features do

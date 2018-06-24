@@ -15,24 +15,36 @@ function getInfo()
 end
 
 -- @description return current wind statistics
-return function(corridor_def)
+return function(corridor_def, points_behind)
     for i = 1, #corridor_def do
-        local pos = corridor_def[i].position
-        if not Sensors.IsPointSafe(pos) then
-            if (i > 2) then
-                if (Script.LuaUI('drawCross_update')) then
-                    Script.LuaUI.drawCross_update({
-                        x = pos.x,
-                        y = pos.y,
-                        z = pos.z,
-                        color = { r = 0, g = 1, b = 0 }
-                    })
-                end
-                return corridor_def[i - 2]
+
+        local position = corridor_def[i].position
+        local dps_ratio = Sensors.GetAreaDpsRatio(position)
+
+        -- position not above DPS limit
+        if (dps_ratio <= 1) then
+
+            -- move [points_behind] back
+            if (i > points_behind) then
+                position = corridor_def[i - points_behind].position
             else
-                return corridor_def[1]
+                position = corridor_def[1].position
             end
+
+            -- draw green cross
+            if (Script.LuaUI('drawCross_update')) then
+                Script.LuaUI.drawCross_update({
+                    x = position.x,
+                    y = position.y,
+                    z = position.z,
+                    color = { r = 0, g = 1, b = 0 }
+                })
+            end
+
+            return position
         end
     end
-    return Sensors.GetFrontLinePoint(corridor_def)
+
+    -- n points behind the front line
+    return Sensors.GetFrontLinePoint(corridor_def, points_behind)
 end

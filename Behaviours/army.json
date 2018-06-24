@@ -1,0 +1,176 @@
+{
+	"additionalNodes": [],
+	"additionalParameters": {
+		"root": {
+			"height": 128,
+			"width": 248
+		}
+	},
+	"inputs": [ {
+		"command": "Variable",
+		"name": "unit_group"
+	}, {
+		"command": "Variable",
+		"name": "corridor_points"
+	} ],
+	"outputs": [],
+	"properties": {
+		"3ENtOXJ4Akgz3BwRRpD8ksTOWQWA2rN9": {
+			"height": 90,
+			"title": "DPS ratio high enough",
+			"width": 224,
+			"x": 628,
+			"y": 109
+		},
+		"5pM9t76ClHCG21EgnWRYG9cva9JisNu9": {
+			"height": 60,
+			"title": "Assemble units",
+			"width": 177,
+			"x": 950,
+			"y": 241
+		},
+		"BfSBUn1HVRDFIWcZHoPfwuKHDQqXavRi": {
+			"height": 60,
+			"title": "sequence",
+			"width": 143,
+			"x": 376,
+			"y": 23
+		},
+		"KnEQWOGgyjymIUnJjpLOFsmrtVhGWyI3": {
+			"height": 94,
+			"title": "DPS At Battle Front",
+			"width": 458,
+			"x": 610,
+			"y": -121
+		},
+		"PxYGKO4VMeEizLREYLcCl6XM4NRt9f3j": {
+			"height": 94,
+			"title": "Battle Front (1 point before DPS drops below one)",
+			"width": 458,
+			"x": 610,
+			"y": -219
+		},
+		"TCahcsEzIZp3TOG36DPIHflAGlw2n6P2": {
+			"height": 92,
+			"title": "nota_vvancak_exam.Move",
+			"width": 231,
+			"x": 1219,
+			"y": 294
+		},
+		"iWtVJFVSrmW4OmzxBlg4NaWQ38MAnLE1": {
+			"height": 92,
+			"title": "nota_vvancak_exam.Fight",
+			"width": 228,
+			"x": 966,
+			"y": 19
+		},
+		"jxObHbnrgdZESyYk7rRqTvzAPWGLfcPM": {
+			"height": 94,
+			"title": "Assembly Point",
+			"width": 458,
+			"x": 1207,
+			"y": 154
+		}
+	},
+	"roles": [ {
+		"categories": [],
+		"name": "Role 0"
+	} ],
+	"root": {
+		"children": [ {
+			"children": [],
+			"id": "PxYGKO4VMeEizLREYLcCl6XM4NRt9f3j",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "var",
+				"value": "battle_front"
+			}, {
+				"name": "value",
+				"value": "nota_vvancak_exam.GetFrontLinePoint(corridor_points, 1)"
+			}, {
+				"name": "scriptName",
+				"value": "store"
+			} ],
+			"scriptName": "store"
+		}, {
+			"children": [],
+			"id": "KnEQWOGgyjymIUnJjpLOFsmrtVhGWyI3",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "var",
+				"value": "front_dps_ratio"
+			}, {
+				"name": "value",
+				"value": "nota_vvancak_exam.GetAreaDpsRatio(battle_front)"
+			}, {
+				"name": "scriptName",
+				"value": "store"
+			} ],
+			"scriptName": "store"
+		}, {
+			"children": [ {
+				"children": [],
+				"id": "iWtVJFVSrmW4OmzxBlg4NaWQ38MAnLE1",
+				"nodeType": "luaCommand",
+				"parameters": [ {
+					"name": "unit_group",
+					"value": "unit_group"
+				}, {
+					"name": "position",
+					"value": "battle_front"
+				}, {
+					"name": "scriptName",
+					"value": "nota_vvancak_exam.Fight"
+				} ],
+				"scriptName": "nota_vvancak_exam.Fight"
+			}, {
+				"children": [ {
+					"children": [],
+					"id": "jxObHbnrgdZESyYk7rRqTvzAPWGLfcPM",
+					"nodeType": "luaCommand",
+					"parameters": [ {
+						"name": "var",
+						"value": "assembly_point"
+					}, {
+						"name": "value",
+						"value": "nota_vvancak_exam.GetFrontLinePoint(corridor_points, 2)"
+					}, {
+						"name": "scriptName",
+						"value": "store"
+					} ],
+					"scriptName": "store"
+				}, {
+					"children": [],
+					"id": "TCahcsEzIZp3TOG36DPIHflAGlw2n6P2",
+					"nodeType": "luaCommand",
+					"parameters": [ {
+						"name": "unit_group",
+						"value": "unit_group"
+					}, {
+						"name": "position",
+						"value": "assembly_point"
+					}, {
+						"name": "scriptName",
+						"value": "nota_vvancak_exam.Move"
+					} ],
+					"scriptName": "nota_vvancak_exam.Move"
+				} ],
+				"id": "5pM9t76ClHCG21EgnWRYG9cva9JisNu9",
+				"nodeType": "sequence",
+				"parameters": []
+			} ],
+			"id": "3ENtOXJ4Akgz3BwRRpD8ksTOWQWA2rN9",
+			"nodeType": "luaCondition",
+			"parameters": [ {
+				"name": "expression",
+				"value": "front_dps_ratio > 3"
+			}, {
+				"name": "repeat",
+				"value": "false"
+			} ]
+		} ],
+		"id": "BfSBUn1HVRDFIWcZHoPfwuKHDQqXavRi",
+		"nodeType": "sequence",
+		"parameters": []
+	}
+}

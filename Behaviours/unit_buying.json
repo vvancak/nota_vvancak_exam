@@ -1,0 +1,129 @@
+{
+	"additionalNodes": [],
+	"additionalParameters": {
+		"root": {
+			"height": 108,
+			"width": 216
+		}
+	},
+	"inputs": [ {
+		"command": "Variable",
+		"name": "line_id"
+	} ],
+	"outputs": [],
+	"properties": {
+		"4cMSt52ia2jx8CMFFJQHwjwCjkb4cHeD": {
+			"height": 94,
+			"title": "Mission info",
+			"width": 198,
+			"x": 549,
+			"y": -165
+		},
+		"LtrkJAqnH4SlOAVWcB89wSCQJ9Dn0Ko5": {
+			"height": 54,
+			"title": "success",
+			"width": 132,
+			"x": 827,
+			"y": 156
+		},
+		"T8H5gsWc3OAgbssRfeot80ZAri0fpPxO": {
+			"height": 60,
+			"title": "sequence",
+			"width": 143,
+			"x": 272,
+			"y": 17
+		},
+		"Z9V9wJamsUPfLBdiV4i2WcVzCxZ8fUNo": {
+			"height": 92,
+			"title": "nota_vvancak_exam.BuyUnit",
+			"width": 245,
+			"x": 826,
+			"y": 45
+		},
+		"dmlNLNPNOp5KD8ne81WGI1OS8ef63L5y": {
+			"height": 90,
+			"title": "luaCondition",
+			"width": 194,
+			"x": 553,
+			"y": 102
+		},
+		"xXjYOzV1CBGIRG8JlLZHkVVqc3uZffgC": {
+			"height": 94,
+			"title": "Needed Unit",
+			"width": 455,
+			"x": 549,
+			"y": -67
+		}
+	},
+	"roles": [ {
+		"categories": [],
+		"name": "Role 0"
+	} ],
+	"root": {
+		"children": [ {
+			"children": [],
+			"id": "4cMSt52ia2jx8CMFFJQHwjwCjkb4cHeD",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "var",
+				"value": "mission_info"
+			}, {
+				"name": "value",
+				"value": "core.MissionInfo()"
+			}, {
+				"name": "scriptName",
+				"value": "store"
+			} ],
+			"scriptName": "store"
+		}, {
+			"children": [],
+			"id": "xXjYOzV1CBGIRG8JlLZHkVVqc3uZffgC",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "var",
+				"value": "needed_unit"
+			}, {
+				"name": "value",
+				"value": "nota_vvancak_exam.GetNeededUnit(mission_info, line_id)"
+			}, {
+				"name": "scriptName",
+				"value": "store"
+			} ],
+			"scriptName": "store"
+		}, {
+			"children": [ {
+				"children": [],
+				"id": "Z9V9wJamsUPfLBdiV4i2WcVzCxZ8fUNo",
+				"nodeType": "luaCommand",
+				"parameters": [ {
+					"name": "unitName",
+					"value": "needed_unit"
+				}, {
+					"name": "lineId",
+					"value": "line_id"
+				}, {
+					"name": "scriptName",
+					"value": "nota_vvancak_exam.BuyUnit"
+				} ],
+				"scriptName": "nota_vvancak_exam.BuyUnit"
+			}, {
+				"children": [],
+				"id": "LtrkJAqnH4SlOAVWcB89wSCQJ9Dn0Ko5",
+				"nodeType": "success",
+				"parameters": []
+			} ],
+			"id": "dmlNLNPNOp5KD8ne81WGI1OS8ef63L5y",
+			"nodeType": "luaCondition",
+			"parameters": [ {
+				"name": "expression",
+				"value": "needed_unit ~= nil"
+			}, {
+				"name": "repeat",
+				"value": "false"
+			} ]
+		} ],
+		"id": "T8H5gsWc3OAgbssRfeot80ZAri0fpPxO",
+		"nodeType": "sequence",
+		"parameters": []
+	}
+}

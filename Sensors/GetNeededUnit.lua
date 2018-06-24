@@ -27,26 +27,20 @@ return function(mission_info, line_id)
         return "armseer"
     end
 
+    local chance = math.random(10)
+
     -- workers
-    if (tableLength(bb.lines[line_id].workers) < 1) and Sensors.CanAffordUnit(mission_info, "armfark", 1) then
+    if (chance < 5 and #bb.lines[line_id].workers < 3) and Sensors.CanAffordUnit(mission_info, "armfark", 1) then
         return "armfark"
     end
 
-    -- if (tableLength(bb.lines[line_id].transports) < 1) and Sensors.CanAffordUnit(mission_info, "armatlas", 1) then
-    --     return "armatlas"
-    -- end
-
-    -- if (tableLength(bb.lines[line_id].defense) < 2) and Sensors.CanAffordUnit(mission_info, "armbox", 1) then
-    --     return "armbox"
-    -- end
-
     -- artillery
-    if (tableLength(bb.lines[line_id].skirmish) < 20) and Sensors.CanAffordUnit(mission_info, "armmart", 1.5) then
+    if (chance < 7) and  Sensors.CanAffordUnit(mission_info, "armmart", 1) then
         return "armmart"
     end
 
     -- army
-    if Sensors.CanAffordUnit(mission_info, "armzeus", 2) then
+    if (chance >= 7) and Sensors.CanAffordUnit(mission_info, "armzeus", 1.5) then
         return "armzeus"
     end
 

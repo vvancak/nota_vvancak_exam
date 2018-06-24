@@ -1,0 +1,200 @@
+{
+	"additionalNodes": [],
+	"additionalParameters": {
+		"root": {
+			"height": 128,
+			"width": 216
+		}
+	},
+	"inputs": [ {
+		"command": "Variable",
+		"name": "corridor"
+	}, {
+		"command": "Variable",
+		"name": "line_id"
+	} ],
+	"outputs": [],
+	"properties": {
+		"3rQ1qTrm66ZCdgwvJJI91nzmWrjPFdgR": {
+			"height": 172,
+			"title": "Radars",
+			"width": 295,
+			"x": 945,
+			"y": -260
+		},
+		"ASZuw1PRQOfbkufNuF726MzX6E0EQI2N": {
+			"height": 172,
+			"title": "Workers",
+			"width": 295,
+			"x": 940,
+			"y": -73
+		},
+		"FiLdHZLvyKalOOM4L6W7iLgPfdkABBKK": {
+			"height": 92,
+			"title": "Line Units",
+			"width": 183,
+			"x": 648,
+			"y": -122
+		},
+		"RG4F4iWLpkHA9LIZFau3cGBA9bM6Km3b": {
+			"height": 72,
+			"title": "wait",
+			"width": 131,
+			"x": 647,
+			"y": 88
+		},
+		"dFisqNosj8hm7MOEB1H10LUYMsp6fXkt": {
+			"height": 130,
+			"title": "New units",
+			"width": 285,
+			"x": 942,
+			"y": -402
+		},
+		"fRO2cBhpp7IY3xiIULjCoRVw8aWWroQh": {
+			"height": 70,
+			"title": "parallel",
+			"width": 202,
+			"x": 648,
+			"y": -2
+		},
+		"i3WhjuAClrCxycDsnB13SLUSQu8nXaz7": {
+			"height": 60,
+			"title": "sequence",
+			"width": 143,
+			"x": 369,
+			"y": 24
+		},
+		"t0QMYNGNPRcPwIS5ZmzJ4MoONDDbZ3rb": {
+			"height": 172,
+			"title": "Army (Warriors & Zeuses)",
+			"width": 295,
+			"x": 939,
+			"y": 109
+		},
+		"vinItJd2b4CfhAt30fdA6FbUOAcPdyHh": {
+			"height": 172,
+			"title": "Skirmishers",
+			"width": 295,
+			"x": 945,
+			"y": 291
+		}
+	},
+	"roles": [ {
+		"categories": [],
+		"name": "Role 0"
+	} ],
+	"root": {
+		"children": [ {
+			"children": [],
+			"id": "FiLdHZLvyKalOOM4L6W7iLgPfdkABBKK",
+			"nodeType": "luaCommand",
+			"parameters": [ {
+				"name": "var",
+				"value": "line"
+			}, {
+				"name": "value",
+				"value": "bb.lines[line_id]"
+			}, {
+				"name": "scriptName",
+				"value": "store"
+			} ],
+			"scriptName": "store"
+		}, {
+			"children": [ {
+				"children": [],
+				"id": "dFisqNosj8hm7MOEB1H10LUYMsp6fXkt",
+				"nodeType": "reference",
+				"parameters": [ {
+					"name": "behaviourName",
+					"value": "nota_vvancak_exam.unit_buying"
+				} ],
+				"referenceInputs": [ {
+					"name": "line_id",
+					"value": "line_id"
+				} ],
+				"referenceOutputs": []
+			}, {
+				"children": [],
+				"id": "3rQ1qTrm66ZCdgwvJJI91nzmWrjPFdgR",
+				"nodeType": "reference",
+				"parameters": [ {
+					"name": "behaviourName",
+					"value": "nota_vvancak_exam.radar"
+				} ],
+				"referenceInputs": [ {
+					"name": "unit_group",
+					"value": "line.radar"
+				}, {
+					"name": "corridor_points",
+					"value": "corridor"
+				} ],
+				"referenceOutputs": []
+			}, {
+				"children": [],
+				"id": "ASZuw1PRQOfbkufNuF726MzX6E0EQI2N",
+				"nodeType": "reference",
+				"parameters": [ {
+					"name": "behaviourName",
+					"value": "nota_vvancak_exam.workers"
+				} ],
+				"referenceInputs": [ {
+					"name": "unit_group",
+					"value": "line.workers"
+				}, {
+					"name": "corridor_points",
+					"value": "corridor"
+				} ],
+				"referenceOutputs": []
+			}, {
+				"children": [],
+				"id": "t0QMYNGNPRcPwIS5ZmzJ4MoONDDbZ3rb",
+				"nodeType": "reference",
+				"parameters": [ {
+					"name": "behaviourName",
+					"value": "nota_vvancak_exam.army"
+				} ],
+				"referenceInputs": [ {
+					"name": "unit_group",
+					"value": "line.attack"
+				}, {
+					"name": "corridor_points",
+					"value": "corridor"
+				} ],
+				"referenceOutputs": []
+			}, {
+				"children": [],
+				"id": "vinItJd2b4CfhAt30fdA6FbUOAcPdyHh",
+				"nodeType": "reference",
+				"parameters": [ {
+					"name": "behaviourName",
+					"value": "nota_vvancak_exam.skirmishers"
+				} ],
+				"referenceInputs": [ {
+					"name": "unit_group",
+					"value": "line.skirmish"
+				}, {
+					"name": "corridor_points",
+					"value": "corridor"
+				} ],
+				"referenceOutputs": []
+			} ],
+			"id": "fRO2cBhpp7IY3xiIULjCoRVw8aWWroQh",
+			"nodeType": "parallel",
+			"parameters": [ {
+				"name": "mode",
+				"value": "all-success"
+			} ]
+		}, {
+			"children": [],
+			"id": "RG4F4iWLpkHA9LIZFau3cGBA9bM6Km3b",
+			"nodeType": "wait",
+			"parameters": [ {
+				"name": "time",
+				"value": 3
+			} ]
+		} ],
+		"id": "i3WhjuAClrCxycDsnB13SLUSQu8nXaz7",
+		"nodeType": "sequence",
+		"parameters": []
+	}
+}

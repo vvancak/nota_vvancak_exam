@@ -1,7 +1,7 @@
 function getInfo()
     return {
         onNoUnits = SUCCESS, -- instant success
-        tooltip = "Reclaim metal",
+        tooltip = "Repair frendly units",
         parameterDefs = {
             {
                 name = "unit_group",
@@ -33,7 +33,7 @@ function Run(self, units, parameter)
 
     for i = 1, #unit_group do
         local unit = unit_group[i]
-        SpringGiveOrderToUnit(unit, CMD.RECLAIM, { position.x, position.y, position.z, radius }, {})
+        SpringGiveOrderToUnit(unit, CMD.REPAIR, { position.x, position.y, position.z, radius }, {})
     end
 
     return SUCCESS
@@ -42,3 +42,4 @@ end
 function Reset(self)
     return self
 end
+
